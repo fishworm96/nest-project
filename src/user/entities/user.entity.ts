@@ -1,6 +1,7 @@
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import * as bcrypt from 'bcryptjs';
 import { Exclude } from "class-transformer";
+import { IsNotEmpty } from "class-validator";
 
 @Entity('user')
 export class UserEntity {
@@ -15,6 +16,7 @@ export class UserEntity {
 
   @Column({ select: false})
   @Exclude()
+  @IsNotEmpty({ message: '请输入密码'})
   password: string;
 
   @Column()

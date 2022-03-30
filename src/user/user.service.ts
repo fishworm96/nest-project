@@ -11,7 +11,7 @@ export class UserService {
     private userRepository: Repository<UserEntity>,
   ) {}
   async register(createUser: RegisterDto): Promise<RegisterDto> {
-    const { username } = createUser;
+    const { username, password } = createUser;
 
     const existUser = await this.userRepository.findOne({
       where: { username },
